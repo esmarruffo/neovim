@@ -1,0 +1,78 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+("<leader>p",	_init.vim	/^nnoremap("<leader>p", "\\"_dP")$/;"	m
+<C-Enter>	_init.vim	/^nnoremap <silent> <C-Enter> :MagmaReevaluateCell<CR>$/;"	m
+<C-H>	_init.vim	/^nnoremap <C-H> <C-W><C-H>$/;"	m
+<C-J>	_init.vim	/^nnoremap <C-J> <C-W><C-J>$/;"	m
+<C-K>	_init.vim	/^nnoremap <C-K> <C-W><C-K>$/;"	m
+<C-L>	_init.vim	/^nnoremap <C-L> <C-W><C-L>$/;"	m
+<C-a>	_init.vim	/^nnoremap <C-a> <Esc>$/;"	m
+<C-n>	_init.vim	/^map <C-n> :NERDTreeToggle<CR>$/;"	m
+<C-t>	_init.vim	/^map <C-t> :set nosplitright<CR>:TagbarToggle<CR>:set splitright<CR>$/;"	m
+<C-x>	_init.vim	/^nnoremap <C-x> <Esc>$/;"	m
+<C-z>	_init.vim	/^nnoremap <C-z> <Esc>  " disable terminal ctrl-z$/;"	m
+<Esc>	_init.vim	/^cnoremap <Esc> <C-c>$/;"	m
+<F13>	_init.vim	/^imap <F13> <Esc>$/;"	m
+<F5>	_init.vim	/^nnoremap <F5> :let _s=@\/<Bar>:%s\/\\s\\+$\/\/e<Bar>:let @\/=_s<Bar><CR>$/;"	m
+<Leader>r	_init.vim	/^nnoremap <silent><expr> <Leader>r  :MagmaEvaluateOperator<CR>$/;"	m
+<Leader>rd	_init.vim	/^nnoremap <silent> <Leader>rd :MagmaDelete<CR>$/;"	m
+<Leader>ro	_init.vim	/^nnoremap <silent> <Leader>ro :MagmaShowOutput<CR>$/;"	m
+<Leader>rr	_init.vim	/^nnoremap <silent> <Leader>rr :MagmaEvaluateLine<CR>$/;"	m
+<SPACE>	_init.vim	/^nnoremap <SPACE> <Nop>$/;"	m
+<c-c>	_init.vim	/^inoremap <c-c> <ESC>$/;"	m
+<leader>0	_init.vim	/^noremap <leader>0 :tablast<cr>$/;"	m
+<leader>1	_init.vim	/^noremap <leader>1 1gt$/;"	m
+<leader>2	_init.vim	/^noremap <leader>2 2gt$/;"	m
+<leader>3	_init.vim	/^noremap <leader>3 3gt$/;"	m
+<leader>4	_init.vim	/^noremap <leader>4 4gt$/;"	m
+<leader>5	_init.vim	/^noremap <leader>5 5gt$/;"	m
+<leader>6	_init.vim	/^noremap <leader>6 6gt$/;"	m
+<leader>7	_init.vim	/^noremap <leader>7 7gt$/;"	m
+<leader>8	_init.vim	/^noremap <leader>8 8gt$/;"	m
+<leader>9	_init.vim	/^noremap <leader>9 9gt$/;"	m
+<leader>h	_init.vim	/^nnoremap <leader>h :nohlsearch<Bar>:echo<CR>$/;"	m
+<leader>q	_init.vim	/^nmap <leader>q :lcl<cr>:q<cr>$/;"	m
+<leader>w	_init.vim	/^nmap <leader>w :w!<cr>$/;"	m
+S	_init.vim	/^nnoremap S diw"0P$/;"	m
+callback 	init.lua	/^        callback = function()$/;"	f
+callback 	init.lua	/^  callback = function()$/;"	f
+callback 	init.lua	/^  callback = function(args)$/;"	f
+cc	_init.vim	/^nnoremap cc "_cc$/;"	m
+config 	init.lua	/^    config = function()$/;"	f
+g:clang_library_path	_init.vim	/^let g:clang_library_path='\/usr\/lib\/llvm15\/lib'$/;"	v
+g:gitgutter_map_keys	_init.vim	/^let g:gitgutter_map_keys = 0$/;"	v
+g:gitgutter_override_sign_column_highlight	_init.vim	/^let g:gitgutter_override_sign_column_highlight = 0$/;"	v
+g:jedi#auto_initialization	_init.vim	/^let g:jedi#auto_initialization = 1$/;"	v
+g:jedi#auto_vim_configuration	_init.vim	/^let g:jedi#auto_vim_configuration = 0$/;"	v
+g:jedi#completions_command	_init.vim	/^let g:jedi#completions_command = ""$/;"	v
+g:jedi#completions_enabled	_init.vim	/^let g:jedi#completions_enabled = 1$/;"	v
+g:jedi#enable_speed_debugging	_init.vim	/^let g:jedi#enable_speed_debugging=0$/;"	v
+g:jedi#popup_on_dot	_init.vim	/^let g:jedi#popup_on_dot = 1$/;"	v
+g:jedi#show_call_signatures	_init.vim	/^let g:jedi#show_call_signatures = "1"$/;"	v
+g:jedi#show_call_signatures_delay	_init.vim	/^let g:jedi#show_call_signatures_delay = 0$/;"	v
+g:jedi#show_call_signatures_modes	_init.vim	/^let g:jedi#show_call_signatures_modes = 'i'  " ni = also in normal mode$/;"	v
+g:jedi#smart_auto_mappings	_init.vim	/^let g:jedi#smart_auto_mappings = 0$/;"	v
+g:jedi#use_tabs_not_buffers	_init.vim	/^let g:jedi#use_tabs_not_buffers = 0$/;"	v
+g:magma_automatically_open_output	_init.vim	/^let g:magma_automatically_open_output = v:false$/;"	v
+g:magma_image_provider	_init.vim	/^let g:magma_image_provider = "ueberzug"$/;"	v
+g:mapleader	_init.vim	/^let g:mapleader = " "$/;"	v
+g:maplocalleader	_init.vim	/^let g:maplocalleader = "`"$/;"	v
+g:python3_host_prog	_init.vim	/^let g:python3_host_prog = '\/usr\/bin\/python3'$/;"	v
+g:python_host_prog	_init.vim	/^let g:python_host_prog = '\/usr\/bin\/python'$/;"	v
+g:rainbow_active	_init.vim	/^let g:rainbow_active = 1$/;"	v
+g:sql_type_default	_init.vim	/^let g:sql_type_default = 'pgsql'$/;"	v
+local bmap 	init.lua	/^    local bmap = function(mode, lhs, rhs, desc)$/;"	f
+mapleader	_init.vim	/^let mapleader = " " " Leader is the space key$/;"	v
+maplocalleader	_init.vim	/^let maplocalleader = "`"$/;"	v
+provider_selector 	init.lua	/^        provider_selector = function(_, filetype, _)$/;"	f
+th	_init.vim	/^nnoremap th :tabfirst<CR>$/;"	m
+tj	_init.vim	/^nnoremap tj :tabprev<CR>$/;"	m
+tk	_init.vim	/^nnoremap tk :tabnext<CR>$/;"	m
+tl	_init.vim	/^nnoremap tl :tablast<CR>$/;"	m
+tn	_init.vim	/^nnoremap tn :tabnew<Space>$/;"	m
+x	_init.vim	/^nnoremap x "_x$/;"	m
+x	_init.vim	/^vnoremap x "_x$/;"	m
