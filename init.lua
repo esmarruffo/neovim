@@ -102,6 +102,12 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {},
   },
+  {
+    'MagicDuck/grug-far.nvim',
+    config = function()
+      require('grug-far').setup()
+    end,
+  },
   'ludovicchabant/vim-gutentags',
   {
     'lukas-reineke/indent-blankline.nvim',
@@ -136,12 +142,14 @@ require('lazy').setup({
     end,
   },
   {
-    'morhetz/gruvbox',
+    'ellisonleao/gruvbox.nvim',
     lazy = false,
     priority = 1000,
     config = function()
+      require('gruvbox').setup({
+        transparent_mode = true,
+      })
       vim.cmd.colorscheme('gruvbox')
-      vim.api.nvim_set_hl(0, 'Normal', { ctermbg = 'NONE', bg = 'NONE' })
     end,
   },
     -- Treesitter (incremental syntax parsing, replaces regex-based highlighting)
@@ -150,11 +158,13 @@ require('lazy').setup({
     lazy = false,
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter').install({
-        'python', 'c', 'cpp', 'lua', 'swift', 'glsl', 'vim', 'vimdoc', 'markdown',
-      })
-      -- Disable legacy regex syntax entirely — treesitter handles all highlighting
+      -- Disable legacy regex syntax — treesitter handles all highlighting
+      -- Reapply colorscheme after, since 'syntax off' runs 'highlight clear'
+      local colorscheme = vim.g.colors_name
       vim.cmd('syntax off')
+      if colorscheme then
+        vim.cmd.colorscheme(colorscheme)
+      end
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('TreesitterStart', { clear = true }),
         callback = function()
@@ -424,6 +434,13 @@ map('n', '<leader>fw', builtin.grep_string, { desc = 'Grep word under cursor' })
 map('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Document symbols' })
 map('n', '<leader>gc', builtin.git_commits, { desc = 'Git commits' })
 map('n', '<leader>gs', builtin.git_status, { desc = 'Git status' })
+
+-- Search & replace (grug-far)
+map('n', '<leader>sr', function() require('grug-far').open() end, { desc = 'Search & replace' })
+map('v', '<leader>sr', function() require('grug-far').with_visual_selection() end, { desc = 'Search & replace (selection)' })
+map('n', '<leader>sw', function()
+  require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>') } })
+end, { desc = 'Search & replace (word)' })
 
 -- Diffview
 map('n', '<leader>gd', ':DiffviewOpen<CR>', { desc = 'Open diff view' })
