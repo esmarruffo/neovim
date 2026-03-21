@@ -128,7 +128,7 @@ require('lazy').setup({
       local telescope = require('telescope')
       telescope.setup({
         defaults = {
-          file_ignore_patterns = { 'node_modules', '.git/' },
+          file_ignore_patterns = { 'node_modules', '.git/', 'build/' },
           mappings = {
             i = {
               ['<C-j>'] = 'move_selection_next',
@@ -271,7 +271,16 @@ vim.lsp.config('sourcekit', {
   capabilities = lsp_capabilities,
 })
 
-vim.lsp.enable({ 'zuban', 'clangd', 'lua_ls', 'sourcekit' })
+-- Kotlin (Android)
+vim.lsp.config('kotlin_ls', {
+  cmd = { 'kotlin-lsp' },
+  cmd_env = { ANDROID_HOME = vim.env.ANDROID_HOME or (vim.env.HOME .. '/Library/Android/sdk') },
+  filetypes = { 'kotlin' },
+  root_markers = { 'settings.gradle', 'settings.gradle.kts', 'build.gradle', 'build.gradle.kts' },
+  capabilities = lsp_capabilities,
+})
+
+vim.lsp.enable({ 'zuban', 'clangd', 'lua_ls', 'sourcekit', 'kotlin_ls' })
 
 -- LSP keybindings (set when a server attaches to a buffer)
 vim.api.nvim_create_autocmd('LspAttach', {
