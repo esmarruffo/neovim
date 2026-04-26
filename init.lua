@@ -108,7 +108,6 @@ require('lazy').setup({
       require('grug-far').setup()
     end,
   },
-  'ludovicchabant/vim-gutentags',
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
@@ -280,7 +279,15 @@ vim.lsp.config('kotlin_ls', {
   capabilities = lsp_capabilities,
 })
 
-vim.lsp.enable({ 'zuban', 'clangd', 'lua_ls', 'sourcekit', 'kotlin_ls' })
+-- TypeScript / React Native
+vim.lsp.config('ts_ls', {
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+  root_markers = { 'tsconfig.json', 'package.json', '.git' },
+  capabilities = lsp_capabilities,
+})
+
+vim.lsp.enable({ 'zuban', 'clangd', 'lua_ls', 'sourcekit', 'kotlin_ls', 'ts_ls' })
 
 -- LSP keybindings (set when a server attaches to a buffer)
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -302,7 +309,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Highlight all occurrences of the word under cursor
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and client.supports_method('textDocument/documentHighlight') then
+    if client and client:supports_method('textDocument/documentHighlight') then
       local hl_group = vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = false })
       vim.api.nvim_clear_autocmds({ group = hl_group, buffer = args.buf })
       vim.api.nvim_create_autocmd('CursorHold', {
@@ -450,6 +457,11 @@ map('v', '<leader>sr', function() require('grug-far').with_visual_selection() en
 map('n', '<leader>sw', function()
   require('grug-far').open({ prefills = { search = vim.fn.expand('<cword>') } })
 end, { desc = 'Search & replace (word)' })
+
+-- Git
+map('n', '<leader>=', ':GitGutterNextHunk<CR>', { desc = 'Go to next diff hunk' })
+map('n', '<leader>-', ':GitGutterPrevHunk<CR>', { desc = 'Go to next diff hunk' })
+
 
 -- Diffview
 map('n', '<leader>gd', ':DiffviewOpen<CR>', { desc = 'Open diff view' })
