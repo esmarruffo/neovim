@@ -157,17 +157,23 @@ require('lazy').setup({
     lazy = false,
     build = ':TSUpdate',
     config = function()
-      -- Disable legacy regex syntax — treesitter handles all highlighting
-      -- Reapply colorscheme after, since 'syntax off' runs 'highlight clear'
+      -- 'manual' loads the syntax machinery but doesn't apply legacy regex
+      -- highlighting to every buffer — we opt buffers in below only when
+      -- treesitter can't handle them. Reapply colorscheme after, since
+      -- enabling syntax runs 'highlight clear'.
       local colorscheme = vim.g.colors_name
-      vim.cmd('syntax off')
+      vim.cmd('syntax manual')
       if colorscheme then
         vim.cmd.colorscheme(colorscheme)
       end
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('TreesitterStart', { clear = true }),
-        callback = function()
-          pcall(vim.treesitter.start)
+        callback = function(args)
+          -- Prefer treesitter; fall back to legacy syntax when no parser
+          -- is installed for this filetype (e.g. niche/unsupported langs).
+          if not pcall(vim.treesitter.start) then
+            vim.bo[args.buf].syntax = 'ON'
+          end
         end,
       })
     end,
